@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="/src/styles/index.css"> <!-- Подключение CSS -->
+    <style>
+
+    </style>
+</head>
+<body class="main">
+
+<div class="header">
+    <a href="/main/file_list.html">
+        <div class="logo"></div>
+    </a>
+    <div class="header_title">
+        
+        <div class="gmu1">Государственный морской университет имени адмирала Ф.Ф. Ушакова </div>
+        <div class="gmu2">ВОЕННЫЙ УЧЕБНЫЙ ЦЕНТР</div>
+    </div>
+</div>
+
+<!-- линия навигации -->
+<div class="navigationBar"> 
+    <div class="navigationS">
+      <!-- стрелки навигации -->
+      <div class="navigationArrows">
+        <a href="#" id="back" class="arrow" title="Back">←</a>
+        <a href="#" id="forward" class="arrow" title="forward">→</a>
+        <a href="#top" id="back-to-top" class="arrow" title="Back to top">↑</a>
+      </div>
+    </div>
+    <div class="fileTree">
+        <p class="navigationText">главная</p>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <div class="line1"></div>
+    <div class="conteineres">
+        <div class="Lich"><div class="block1">Личный кабинет</div></div>
+        <a href="/src/pages/view_kat/view_kat.html" class="kat" rel="noopener noreferrer">
+            <div class="block2">Каталог ресурсов</div>
+        </a>
+        <div class="SAMPO"><div class="block3">Самоподготовка</div></div>
+    </div>
+<footer class="footer">
+    <div class="footerTitle">
+        <p> При возникновении вопросов обратиться в 208 кабинет</p>
+    </div>
+</footer>
+<script>
+    
+  
+
+    function updateDateTime() {
+        const now = new Date();
+
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const currentTime = `${hours}:${minutes}:${seconds}`;
+
+        const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+        const dayOfWeek = daysOfWeek[now.getDay()];
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        const currentDate = `${dayOfWeek}, ${day}.${month}.${year}`;
+
+        document.getElementById('time').textContent = currentTime;
+        document.getElementById('date').textContent = currentDate;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+</script>
+</body>
+</html>
+    
+  

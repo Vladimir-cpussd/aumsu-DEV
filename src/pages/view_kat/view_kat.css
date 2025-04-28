@@ -1,0 +1,208 @@
+
+.contentMain{
+    width:100%;
+    
+    max-width: 2500px;
+    display: flex; /* Используем flexbox для горизонтального размещения */
+}
+.leftMenu{
+    width:20%;
+    height:550px;
+    background-color: rgb(254, 245,236);
+    border-radius: 3px;
+    
+    position: sticky;
+    top: 45px;
+
+}
+.mainMenu {
+    width:80%;
+    height: 100%;
+    background-color: #eeeeee;
+    border-radius: 3px;
+
+
+
+}
+
+.rightMenu {
+    width: 20%;
+    height: 550px;
+    background-color: rgb(254, 245, 236);
+    
+    position: sticky;
+    top: 45px;
+}
+
+
+
+
+.content {
+    display: flex; /* Используем flexbox для расположения элементов */
+}
+
+
+form {
+    display: flex;
+    flex-direction: column; /* Располагаем элементы в колонку */
+}
+
+label {
+    margin-bottom: 5px; /* Отступ между label и select/input */
+}
+
+input[type="file"], button {
+    margin-top: 10px; /* Отступ сверху для кнопки и поля выбора файла */
+}
+.form-group {
+    padding-top:10px;
+    font-size: 20px; /* Размер шрифта */
+    color: #adadad;
+    font-family: Oswald;
+    font-weight: 200;
+    width:100%;
+
+}
+
+label {
+    display: block; /* Каждый label будет на новой строке */ /* Отступ под label */
+}
+select, input[type="file"] {
+    width: 100%; /* Ширина полей ввода на всю ширину родительского контейнера */
+    padding: 8px; /* Внутренний отступ */
+    box-sizing: border-box; /* Учитываем отступы в ширине */
+}
+button {
+    padding: 10px 15px; /* Внутренний отступ для кнопки */
+    cursor: pointer; /* Указатель при наведении */
+    width:300px;
+    margin-top:20px;
+}
+
+h2{
+    font-size: 20px; /* Размер шрифта */
+    color: #c0c0c0;
+    font-family: Oswald;
+    font-weight: Bold;
+    padding-left: 30px;
+}
+li{
+    width:100px;
+    height:30px;
+    background-color:black;
+    color:white;
+    font-size: 30px;
+    font-weight: 200;
+}
+select {
+
+    outline: none; /* Убираем обводку при фокусе */
+    padding: 8px; /* Добавляем внутренние отступы */
+    border-radius: 4px; /* Закругляем углы */
+    background-color: #f0f0f0; /* Цвет фона */
+    font-family: Oswald;
+    font-size:16px;
+    width: 97%; /* Устанавливаем ширину */
+    height: 40px; /* Устанавливаем высоту */
+    border-color: #e2e2e2;
+}
+
+
+button {
+    background-color: #0A61C5;
+    color: #ffffff; /* Цвет текста */
+    border-radius: 4px; /* Закругляем углы */
+    cursor: pointer; /* Указатель при наведении */
+    width: 130px; /* Устанавливаем ширину */
+    height: 40px; /* Устанавливаем высоту */
+    margin-top: 7px;
+    border:none;
+    margin-left: 4px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #1e60ab, #0A61C5); /* Градиент от красного к желтому */
+    background-size: 400% 400%; /* Увеличиваем размер для анимации */
+    animation: gradientAnimation 1s ease infinite; /* Анимация градиента */
+}
+
+input[type="file"] {
+    display: none; /* Скрываем стандартный элемент */
+}
+
+/* Стили для кнопки */
+.custom-button {
+    background-color: #c9c9c9;
+    color: white; /* Цвет текста */
+    padding: 10px 15px; /* Внутренние отступы */
+    border-radius: 4px; /* Закругляем углы */
+    cursor: pointer; /* Указатель при наведении */
+    width: 120px; /* Устанавливаем ширину */
+    text-align: center; /* Центрируем текст */
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.custom-button:hover {
+    background: linear-gradient(45deg, #052F5F, #0A61C5); /* Градиент от красного к желтому */
+    background-size: 400% 400%; /* Увеличиваем размер для анимации */
+    animation: gradientAnimation 1s ease infinite; /* Анимация градиента */
+}
+
+.poisk{
+    width:880px;
+    height:30px;
+    background-color: #ffffff;
+    border-radius:3px;
+    margin-top:10px;
+    margin-left:10px;
+    font-family:Oswald;
+    padding-left:10px;
+    padding-top:3px;
+    color: #b0b0b0;
+}
+.search-container {
+    position: relative;
+    width: 840px; /* Ширина поля ввода */
+    margin-top:20px;
+    margin-left:20px;
+}
+.input-field {
+    width: 100%;
+    border:none;
+    border-radius: 3px;
+    font-size: 16px;
+    outline: none; /* Убираем обводку при фокусе */
+}
+.placeholder {
+    position: absolute;
+    left: 10px; /* Отступ от левого края */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d3d3d3;
+    pointer-events: none; /* Игнорируем события мыши */
+    transition: opacity 0.2s;
+    font-family:Oswald;
+}
+#filterButton{
+    margin-top:30px;
+}
+
+.lection--lection {
+    color: #ffffff;
+    background-color: rgb(28, 35, 243);
+}
+
+
+.footer {
+    background-color: #052F5F;
+    width: 100%;
+    height: 60px;
+    bottom: 0px;
+}
+
+.footerTitle {
+    color: #ffffff;
+    margin: 20px;
+
+}
