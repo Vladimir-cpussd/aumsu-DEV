@@ -3,7 +3,7 @@
     width: 100%;
     margin: 0 auto;
 }
-.navigationBar { /* Линия навигации */
+.navigationBar { 
     z-index: 10;
     position: sticky;
     top: 0;
@@ -29,8 +29,13 @@
     font-size: 30px;
     margin-left: 10px;
     color: rgb(254, 245, 236);
-    
 }
+
+.arrow:hover { 
+    
+    color: #b5d6fb;
+}
+
 
 .fileTree {
     display: inline-block;
@@ -69,47 +74,41 @@
 
 
 
-@font-face {
-    font-family: 'Oswald'; /* Уникальное имя шрифта */
-    
-    
-    font-weight: normal; /* Нормальный вес шрифта */
-    font-style: normal; /* Нормальный стиль шрифта */
-}
+
 
 @font-face {
     font-family: 'Oswald';
-    src: url('/src/static/Oswald-Regular.ttf') format('truetype'); /* Укажите путь к файлу */
-    font-weight: normal; /* Укажите вес шрифта */
-    font-style: normal; /* Укажите стиль шрифта */
+    src: url('/src/static/Oswald-Regular.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
 }
 @font-face {
     font-family: 'Oswald';
-    src: url('/src/static/Oswald-Medium.ttf') format('truetype'); /* Укажите путь к файлу */
-    font-weight: normal; /* Укажите вес шрифта */
-    font-style: normal; /* Укажите стиль шрифта */
+    src: url('/src/static/Oswald-Medium.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
 
 }
 @font-face {
     font-family: 'Oswald';
-    src: url('/src/static/Oswald-Regular.ttf') format('truetype'); /* Укажите путь к файлу */
-    font-weight: normal; /* Укажите вес шрифта */
-    font-style: normal; /* Укажите стиль шрифта */
+    src: url('/src/static/Oswald-Regular.ttf') format('truetype'); 
+    font-weight: normal; 
+    font-style: normal; 
 }
 @font-face {
     font-family: 'Oswald';
-    src: url('/src/static/Oswald-Light.ttf') format('truetype'); /* Укажите путь к файлу */
-    font-weight: normal; /* Укажите вес шрифта */
-    font-style: normal; /* Укажите стиль шрифта */
+    src: url('/src/static/Oswald-Light.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal; 
 }
 .fade-out {
-    opacity: 0; /* Устанавливаем прозрачность 0 для потухания */
+    opacity: 0; 
 }
 .header {
     display: inline-block;
     background: #052F5F;
-    background-size: 400% 400%; /* Увеличиваем размер для анимации */
-    animation: gradientAnimation 100s ease infinite; /* Анимация градиента */
+    background-size: 400% 400%; 
+    animation: gradientAnimation 100s ease infinite; 
     width:100%;
     height: 145px;
 }
@@ -128,8 +127,8 @@
 
 
 .logo {
-    width: 125px; /* Ширина логотипа */
-    height: 125px; /* Высота логотипа */
+    width: 125px; 
+    height: 125px; 
     background-image: url("/src/images/channels4_profile.png");
     background-size:cover;
     margin-top: 10px;
@@ -143,7 +142,7 @@
     
 }
 .gmu1 {
-    font-size: 24px; /* Размер шрифта */
+    font-size: 24px; 
     
     color:white;
     font-family: Oswald;
@@ -156,7 +155,7 @@
 .gmu2 {
     
     
-    font-size: 50px; /* Размер шрифта */
+    font-size: 50px; 
     color:white;
     font-family: Oswald;
     font-weight:Bold;
@@ -172,7 +171,7 @@
 }
 
 .electr{
-    font-size: 36px; /* Размер шрифта */
+    font-size: 36px; 
     color:Black;
     font-family: Oswald;
     font-weight:600;
@@ -184,7 +183,7 @@
 .line1{
     width:650px;
     height:3px;
-    background: linear-gradient(45deg, #0078ff, #03397c); /* Градиент от красного к желтому */
+    background: linear-gradient(45deg, #0078ff, #03397c); 
     margin-left:30px;
 }
 
@@ -197,8 +196,8 @@
     background-color: #c5c5c5;
     color: #000000;
     border-radius: 5px;
-    transition: transform 0.5s ease; /* Плавный переход для трансформации */
-    cursor: pointer; /* Указатель курсора при наведении */
+    transition: transform 0.5s ease; 
+    cursor: pointer; 
     background-image: url(/src/images/1470325129_5d5gpuv0i1e.jpg);
     background-size: cover ;
 
@@ -214,12 +213,12 @@
     background-color: #c5c5c5;
     color: #000000;
     border-radius: 5px;
-    transition: transform 0.5s ease; /* Плавный переход для трансформации */
-    cursor: pointer; /* Указатель курсора при наведении */
+    transition: transform 0.5s ease;
+    cursor: pointer; 
 }
 
 .Lich:hover, .kat:hover, .SAMPO:hover {
-    transform: scale(1.1); /* Увеличение блока при наведении */
+    transform: scale(1.1); 
 }
 .block1, .block2, .block3{
     font-family:Oswald;
@@ -237,8 +236,8 @@
     background-color: #c5c5c5;
     color: #000000;
     border-radius: 5px;
-    transition: transform 0.5s ease; /* Плавный переход для трансформации */
-    cursor: pointer; /* Указатель курсора при наведении */
+    transition: transform 0.5s ease; 
+    cursor: pointer; 
     background-image: url(/src/images/books-lit@2x-e1550903308223.jpg);
     background-size: cover ;
 
@@ -252,8 +251,8 @@
     background-color: #c5c5c5;
     color: #000000;
     border-radius: 5px;
-    transition: transform 0.5s ease; /* Плавный переход для трансформации */
-    cursor: pointer; /* Указатель курсора при наведении */
+    transition: transform 0.5s ease; 
+    cursor: pointer; 
     background-image: url(/src/images/vyshka4-1024x683.jpeg);
     background-size: cover ;
 

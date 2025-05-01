@@ -1,6 +1,8 @@
 // src/pages/view_kat/LeftFilters.jsx
 import React, { useState, useEffect } from 'react';
 
+
+
 import './view_kat.css';
 
 const LeftFilters = () => {
@@ -143,7 +145,7 @@ const LeftFilters = () => {
 
   return (
     <div className="left-filters">
-      <h2>Фильтры</h2>
+      
       
       <div className="filter-group">
         <label htmlFor="department">Кафедра:</label>
@@ -216,7 +218,12 @@ const LeftFilters = () => {
       >
         {loading ? 'Загрузка...' : 'Применить фильтры'}
       </button>
+      <button
       
+        className="apply-button"
+      >
+        {'Очистить фильтры'}
+      </button>
       {error && <div className="error-message">{error}</div>}
       
       <div className="results-container">
@@ -237,5 +244,6 @@ const LeftFilters = () => {
     </div>
   );
 };
+
 
 export default LeftFilters;

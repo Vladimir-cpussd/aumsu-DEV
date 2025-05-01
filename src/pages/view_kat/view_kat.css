@@ -206,3 +206,15 @@ input[type="file"] {
     margin: 20px;
 
 }
+
+.left-filters {
+    margin-left: 10px;
+}
+
+.apply-button {
+    background-color: #000cf3;
+    padding: 1px;
+    width: 150px;
+}
+
+
