@@ -1,9 +1,8 @@
 // src/pages/view_kat/LeftFilters.jsx
 import React, { useState, useEffect } from 'react';
-
-
-
 import './view_kat.css';
+
+
 
 const LeftFilters = () => {
   // Состояния для фильтров

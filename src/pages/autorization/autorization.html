@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="./autorization.css">
+</head>
+<body>
+<div class="header">
+    <a href="/main/file_list.html">
+        <p class="back">главная</p>
+    </a>
+    <a href="/main/file_list.html">
+        <div class="logo"></div>
+    </a>
+    
+    <div class="gmu1">Государственный морской университет имени адмирала Ф.Ф. Ушакова </div>
+    <div class="gmu2">ВОЕННЫЙ УЧЕБНЫЙ ЦЕНТР</div>
+</div>
+<div class="aut_text">ВХОД</div>
+<div class="container">
+    <div class="input-container">
+        <input type="text" placeholder="Логин" class="input-field">
+        <input type="password" placeholder="Пароль" class="input-field">
+    </div>
+    <button class="login-button" onclick="redirectToPage()">Войти</button>
+</div>
+<div class="zabil">Если вы забыли пароль, обратитесь в 208 кабинет</div>
+
+<script>
+    function redirectToPage() {
+        const body = document.body;
+        body.classList.add('fade-out'); // Добавляем класс для анимации потухания
+
+        setTimeout(() => {
+// Здесь можно добавить проверку логина и пароля, если нужно
+            const login = document.querySelector('.input-field[type="text"]').value;
+            const password = document.querySelector('.input-field[type="password"]').value;
+
+// Пример проверки (замените на вашу логику)
+            if (login === "admin" && password === "password") {
+                window.location.href = "../main/file_list.html"; // Укажите URL, на который нужно перенаправить
+            } else {
+                alert("Неверный логин или пароль!");
+                body.classList.remove('fade-out'); // Убираем класс, чтобы вернуть видимость
+            }
+        }, 1000); // Время, равное продолжительности анимации
+    }
+</script>
+</body>
+</html>

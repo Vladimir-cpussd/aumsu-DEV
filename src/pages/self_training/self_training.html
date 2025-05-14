@@ -5,35 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Самоподготовка</title>
     <link rel="stylesheet" href="/src/styles/index.css"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="./self_training.css">
     <style>
 
     </style>
 </head>
 <body class="main">
 
-<div class="header">
-    <a href="/main/file_list.html">
-        <div class="logo"></div>
-    </a>
-    <div class="header_title">
-        
-        <div class="gmu1">Государственный морской университет имени адмирала Ф.Ф. Ушакова </div>
-        <div class="gmu2">ВОЕННЫЙ УЧЕБНЫЙ ЦЕНТР</div>
-    </div>
-</div>
-
-<!-- линия навигации -->
-<div class="navigationBar"> 
-    <div class="navigationS">
-      <!-- стрелки навигации -->
-      <div class="navigationArrows">
-        <a href="/main/file_list.html" id="back" class="arrow" title="Back">←</a>
-        <a href="#" id="forward" class="arrow" title="forward">→</a>
-        <a href="#top" id="back-to-top" class="arrow" title="Back to top">↑</a>
-      </div>
-    </div>
-    <div class="fileTree">
-        <p class="navigationText">главная</p>
+    <div class="header">
+        <a href="/main/file_list.html">
+            <div class="logo"></div>
+        </a>
+        <div class="header_title"> 
+            <div class="gmu1">Государственный морской университет имени адмирала Ф.Ф. Ушакова </div>
+            <div class="gmu2">ВОЕННЫЙ УЧЕБНЫЙ ЦЕНТР</div>
+        </div>
     </div>
 
-</div>
+    <!-- линия навигации -->
+    <div class="navigationBar"> 
+        <div class="navigationS">
+        <!-- стрелки навигации -->
+        <div class="navigationArrows">
+            <a href="/main/file_list.html" id="back" class="arrow" title="Back">←</a>
+            <a href="#" id="forward" class="arrow" title="forward"></a>
+            <a href="#top" id="back-to-top" class="arrow" title="Back to top">↑</a>
+        </div>
+        </div>
+        <div class="fileTree">
+            <p class="navigationText">главная → Самоподготовка</p>
+        </div>
+    </div>
+
+<!-- тело страницы -->
+    <main>
+        <div class="text-title">
+            <h1>Выбрать задание</h1>
+        </div>
+        <div class="cards-container">
+            <a href="/src/pages/self_training_tests/test_1/test_1.html" class="card">
+                <h2 class="card-title">тема 1</h2>
+                <h3 class="card-description">пройти тестирование по раскладке продуктов</h3>
+            </a>
+            
+            <a class="card">
+                <h2 class="card-title">тема 2</h2>
+                <h3 class="card-description">пройти тестирование по раскладке продуктов</h3>
+            </a>
+            <a class="card">
+                <h2 class="card-title">тема 3</h2>
+                <h3 class="card-description">пройти тестирование по раскладке продуктов</h3>
+            </a>
+            <a class="card">
+                <h2 class="card-title">тема 4</h2>
+                <h3 class="card-description">пройти тестирование по раскладке продуктов</h3>
+            </a>
+        </div>
+    </main>
+</body>

@@ -1,0 +1,158 @@
+
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('./static/Oswald-Regular.ttf') format('truetype'); /* Укажите путь к файлу */
+    font-weight: normal; /* Укажите вес шрифта */
+    font-style: normal; /* Укажите стиль шрифта */
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('./static/Oswald-Medium.ttf') format('truetype'); /* Укажите путь к файлу */
+    font-weight: normal; /* Укажите вес шрифта */
+    font-style: normal; /* Укажите стиль шрифта */
+
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('./static/Oswald-Regular.ttf') format('truetype'); /* Укажите путь к файлу */
+    font-weight: normal; /* Укажите вес шрифта */
+    font-style: normal; /* Укажите стиль шрифта */
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('./static/Oswald-Light.ttf') format('truetype'); /* Укажите путь к файлу */
+    font-weight: normal; /* Укажите вес шрифта */
+    font-style: normal; /* Укажите стиль шрифта */
+}
+
+.header {
+    display: flex;
+    flex-direction: column; /* Устанавливаем вертикальное расположение */
+    align-items: center;    /* Центрируем элементы по горизонтали */
+    padding: 20px;
+    background: linear-gradient(45deg, #052F5F, #0A61C5); /* Градиент от красного к желтому */
+    background-size: 400% 400%; /* Увеличиваем размер для анимации */
+    animation: gradientAnimation 100s ease infinite; /* Анимация градиента */
+    width:101%;
+    height:270px;
+    margin-top:-10px;
+    margin-left:-8px;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.back {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgb(0, 0, 156);
+    color: rgb(227, 227, 227); 
+    text-decoration: none;
+    border-radius: 10px; 
+    font-family: Arial, sans-serif; 
+    font-weight: 500;
+    border-color: aliceblue;
+    
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    margin-left: -50vw;
+    border-width: 10px;
+    margin-top: -10px;
+}
+
+.logo {
+    width: 125px; 
+    height: 125px; 
+    background-image: url("./img/channels4_profile.png");
+    background-size:cover;
+    margin-bottom:20px;
+}
+.gmu1 {
+    font-size: 24px;
+    margin-bottom:10px;
+    color:white;
+    font-family: Oswald;
+    font-weight:400;
+    letter-spacing:3px;
+
+}
+.gmu2 {
+    width: 900px; 
+    height: 30px; 
+    font-size: 50px; 
+    color:white;
+    font-family: Oswald;
+    font-weight:900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.aut_text{
+    font-size:60px;
+    font-family: Oswald;
+    font-weight: Bold;
+    margin-top:10px;
+    margin-bottom:20px;
+    text-align: center;
+}
+.container {
+    display: flex;
+    align-items: flex-start; 
+    justify-content: center; 
+    gap: 10px;
+    text-align: center;
+    margin: 0 auto; 
+    width: 100%; 
+}
+.input-container {
+    display: flex;
+    flex-direction: column; /* Расположение полей ввода вертикально */
+    gap: 10px; /* Отступ между полями ввода */
+    text-align: center;
+}
+
+.input-field {
+    width: 300px; /* Длина поля */
+    height: 30px; /* Ширина поля */
+    background-color: #d3d3d3; /* Серый цвет фона */
+    border: none; /* Убираем рамку */
+    padding: 5px; /* Отступ внутри поля */
+    font-size: 16px; /* Размер шрифта */
+    border-radius: 5px;
+    outline: none; /* Убираем стандартный контур при фокусе */
+    padding: 5px; /* Отступ внутри поля */
+    padding-left: 10px; /* Отступ слева для текста */
+}
+
+
+.login-button {
+    width: 90px; /* Длина кнопки */
+    height: 90px; /* Ширина кнопки */
+    background: linear-gradient(45deg, #052F5F, #0A61C5); /* Градиент от красного к желтому */
+    background-size: 400% 400%; /* Увеличиваем размер для анимации */
+    animation: gradientAnimation 3s ease infinite; /* Анимация градиента */
+    color: white; /* Цвет текста на кнопке */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Курсор при наведении */
+    font-size: 16px; /* Размер шрифта */
+    border-radius: 5px;
+}
+.zabil{
+    font-size:24px;
+    font-family: Oswald;
+    font-weight: 400;
+    margin-top:20px;
+    text-align: center;
+    color: #b9b9b9;
+}
