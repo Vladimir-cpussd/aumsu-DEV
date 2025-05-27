@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
-    <link rel="stylesheet" href="/src/styles/index.css"> <!-- Подключение CSS -->
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="/src/styles/index.css">
+   
 </head>
 <body class="main">
 
@@ -30,12 +28,13 @@
         <a href="#" id="back" class="arrow" title="Back">←</a>
         <a href="#" id="forward" class="arrow" title="forward"></a>
         <a href="#top" id="back-to-top" class="arrow" title="Back to top">↑</a>
+        
       </div>
     </div>
     <div class="fileTree">
         <p class="navigationText">главная</p>
     </div>
-
+    <a href="/src/pages/autorization/autorization.html" class="registration">регистрация</a>
 </div>
 
 
@@ -50,7 +49,7 @@
     <div class="line1"></div>
     <div class="conteineres">
         <a href="/src/pages/autorization/autorization.html" class="Lich" rel="noopener noreferrer">
-            <div class="block2">Каталог ресурсов</div>
+            <div class="block2">Личный кабинет</div>
         </a>
         <a href="/src/pages/view_kat/view_kat.html" class="kat" rel="noopener noreferrer">
             <div class="block2">Каталог ресурсов</div>
@@ -62,33 +61,108 @@
 <footer class="footer">
     <div class="footerTitle">
         <p> При возникновении вопросов обратиться в 208 кабинет</p>
+        <p id="text">текст</p>
     </div>
 </footer>
 <script>
-    
+    // Используем относительный путь (/api/departments) вместо полного URL
+  fetch("/api/departments")
+    .then(response => response.json())
+    .then(data => {
+      const departmentName = data[0].name;
+      document.getElementById("text").textContent = departmentName;
+    })
+    .catch(error => {
+      document.getElementById("text").textContent = "Ошибка: " + error.message;
+      console.error("Ошибка запроса:", error);
+    });
+
+
   
 
-    function updateDateTime() {
-        const now = new Date();
+   let authToken = localStorage.getItem('authToken');
+let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const currentTime = `${hours}:${minutes}:${seconds}`;
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    initAuthStatus();
+});
 
-        const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-        const dayOfWeek = daysOfWeek[now.getDay()];
-        const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const year = now.getFullYear();
-        const currentDate = `${dayOfWeek}, ${day}.${month}.${year}`;
-
-        document.getElementById('time').textContent = currentTime;
-        document.getElementById('date').textContent = currentDate;
+// Инициализация блока статуса аутентификации
+function initAuthStatus() {
+    // Проверяем, не добавлен ли уже блок статуса
+    let authStatusDiv = document.getElementById('auth-status');
+    
+    // Если блока нет - создаем его
+    if (!authStatusDiv) {
+        authStatusDiv = document.createElement('div');
+        authStatusDiv.id = 'auth-status';
+        authStatusDiv.style.position = 'fixed';
+        authStatusDiv.style.top = '10px';
+        authStatusDiv.style.right = '10px';
+        authStatusDiv.style.padding = '10px';
+        authStatusDiv.style.background = '#f0f0f0';
+        authStatusDiv.style.border = '1px solid #ccc';
+        authStatusDiv.style.borderRadius = '5px';
+        authStatusDiv.style.zIndex = '1000';
+        
+        document.body.appendChild(authStatusDiv);
     }
+    
+    updateAuthStatus();
+}
 
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
+// Обновление статуса аутентификации
+function updateAuthStatus() {
+    const authStatusDiv = document.getElementById('auth-status');
+    if (!authStatusDiv) return;
+    
+    // Очищаем содержимое блока
+    authStatusDiv.innerHTML = '';
+    
+    // Если пользователь авторизован - показываем информацию
+    if (authToken && currentUser) {
+        const userText = document.createElement('span');
+        userText.textContent = `Вы вошли как: ${currentUser.username}`;
+        authStatusDiv.appendChild(userText);
+        
+        const logoutBtn = document.createElement('button');
+        logoutBtn.textContent = 'Выйти';
+        logoutBtn.style.marginLeft = '10px';
+        logoutBtn.onclick = logout;
+        authStatusDiv.appendChild(logoutBtn);
+    }
+    // Если не авторизован - ничего не показываем (страница доступна без авторизации)
+}
+
+// Выход из системы
+function logout() {
+    // Очищаем данные авторизации
+    authToken = null;
+    currentUser = null;
+    
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('currentUser');
+    
+    // Обновляем статус (блок скроется)
+    updateAuthStatus();
+}
+
+// Мок функция для имитации входа (замените на реальный запрос к бэкенду)
+async function mockLogin(username, password) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (username === 'admin' && password === 'admin123') {
+                resolve({
+                    token: 'mock-jwt-token-123456',
+                    user: { username: 'Администратор', email: 'admin@example.com' }
+                });
+            } else {
+                reject(new Error('Неверное имя пользователя или пароль'));
+            }
+        }, 500);
+    });
+}
 </script>
 </body>
 </html>

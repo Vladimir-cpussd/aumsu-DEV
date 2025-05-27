@@ -17,6 +17,7 @@
     display: inline-block;
     text-align: center;
     height: 100%;
+    flex-wrap: wrap;
 }
 
 .navigationArrows {
@@ -47,27 +48,14 @@
     color: rgb(255, 255, 255);
     text-align: center;
     margin: 0px;
-    
     padding: 5px;
 }
 
-.date_time {
-    display: inline-block;
+.registration {
+    text-decoration: none;
+    color: aliceblue;
 }
-.time, .date {
-    font-size: 20px;
-    color: rgb(254, 245, 236);
-    font-family:Oswald;
-    margin-left:30px;
-    
-    display: inline-block;
-}
-.date {
-    display: inline-block;
-    font-size: 24px;
-    font-family:Oswald;
-    
-}
+
 
 
 

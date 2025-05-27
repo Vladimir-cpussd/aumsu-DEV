@@ -50,10 +50,11 @@ form {
 label {
     margin-bottom: 5px; /* Отступ между label и select/input */
 }
-
+/*
 input[type="file"], button {
     margin-top: 10px; /* Отступ сверху для кнопки и поля выбора файла */
-}
+
+
 .form-group {
     padding-top:10px;
     font-size: 20px; /* Размер шрифта */
@@ -72,12 +73,7 @@ select, input[type="file"] {
     padding: 8px; /* Внутренний отступ */
     box-sizing: border-box; /* Учитываем отступы в ширине */
 }
-button {
-    padding: 10px 15px; /* Внутренний отступ для кнопки */
-    cursor: pointer; /* Указатель при наведении */
-    width:300px;
-    margin-top:20px;
-}
+
 
 h2{
     font-size: 20px; /* Размер шрифта */
@@ -108,7 +104,7 @@ select {
 }
 
 
-button {
+.apply-button {
     background-color: #0A61C5;
     color: #ffffff; /* Цвет текста */
     border-radius: 4px; /* Закругляем углы */

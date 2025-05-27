@@ -1,8 +1,6 @@
-// src/pages/view_kat/LeftFilters.jsx
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './view_kat.css';
-
-
 
 const LeftFilters = () => {
   // Состояния для фильтров
@@ -24,12 +22,15 @@ const LeftFilters = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Базовый URL API
+  const API_BASE_URL = 'http://10.242.2.77:8080';
+
   // Загрузка начальных данных (кафедр)
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('/api/departments');
+        const response = await axios.get(`${API_BASE_URL}/api/departments`);
         setDepartments(response.data);
       } catch (err) {
         setError(`Ошибка загрузки кафедр: ${err.message}`);
@@ -47,7 +48,7 @@ const LeftFilters = () => {
       const fetchCourses = async () => {
         try {
           setLoading(true);
-          const response = await axios.get(`/api/courses?department=${filters.department}`);
+          const response = await axios.get(`${API_BASE_URL}/api/courses?department=${filters.department}`);
           setCourses(response.data);
           // Сбрасываем зависимые фильтры
           setFilters(prev => ({ ...prev, course: '', subject: '', lecture: '' }));
@@ -71,7 +72,7 @@ const LeftFilters = () => {
       const fetchSubjects = async () => {
         try {
           setLoading(true);
-          const response = await axios.get(`/api/subjects?course=${filters.course}`);
+          const response = await axios.get(`${API_BASE_URL}/api/subjects?course=${filters.course}`);
           setSubjects(response.data);
           // Сбрасываем зависимые фильтры
           setFilters(prev => ({ ...prev, subject: '', lecture: '' }));
@@ -95,10 +96,8 @@ const LeftFilters = () => {
       const fetchLectures = async () => {
         try {
           setLoading(true);
-          const response = await axios.get(`/api/lectures?subject=${filters.subject}`);
+          const response = await axios.get(`${API_BASE_URL}/api/lectures?subject=${filters.subject}`);
           setLectures(response.data);
-          // Сбрасываем зависимые фильтры
-          setFilters(prev => ({ ...prev, lecture: '' }));
         } catch (err) {
           setError(`Ошибка загрузки лекций: ${err.message}`);
         } finally {
@@ -119,8 +118,25 @@ const LeftFilters = () => {
     setFilters(prev => ({ ...prev, [name]: value }));
   };
 
+  // Очистка всех фильтров
+  const clearFilters = () => {
+    setFilters({
+      department: '',
+      course: '',
+      subject: '',
+      lecture: ''
+    });
+    setResults([]);
+    setError(null);
+  };
+
   // Отправка фильтров на сервер
   const applyFilters = async () => {
+    if (!filters.department && !filters.course && !filters.subject && !filters.lecture) {
+      setError('Пожалуйста, выберите хотя бы один фильтр');
+      return;
+    }
+
     setLoading(true);
     setError(null);
     
@@ -130,13 +146,13 @@ const LeftFilters = () => {
         Object.entries(filters).filter(([_, value]) => value !== '')
       );
       
-      const response = await axios.get('/api/lectures/filter', {
+      const response = await axios.get(`${API_BASE_URL}/api/lectures/filter`, {
         params: activeFilters
       });
       
       setResults(response.data);
     } catch (err) {
-      setError(`Ошибка при фильтрации: ${err.message}`);
+      setError(`Ошибка при фильтрации: ${err.response?.data?.message || err.message}`);
     } finally {
       setLoading(false);
     }
@@ -144,105 +160,110 @@ const LeftFilters = () => {
 
   return (
     <div className="left-filters">
-      
-      
-      <div className="filter-group">
-        <label htmlFor="department">Кафедра:</label>
-        <select 
-          id="department"
-          name="department"
-          value={filters.department}
-          onChange={handleFilterChange}
-          disabled={loading}
-        >
-          <option value="">Все кафедры</option>
-          {departments.map(dept => (
-            <option key={dept.id} value={dept.id}>{dept.name}</option>
-          ))}
-        </select>
+      <div className="filters-section">
+        <div className="filter-group">
+          <label htmlFor="department">Кафедра:</label>
+          <select 
+            id="department"
+            name="department"
+            value={filters.department}
+            onChange={handleFilterChange}
+            disabled={loading}
+          >
+            <option value="">Выберите кафедру</option>
+            {departments.map(dept => (
+              <option key={dept.id} value={dept.id}>{dept.name}</option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="filter-group">
+          <label htmlFor="course">Курс:</label>
+          <select 
+            id="course"
+            name="course"
+            value={filters.course}
+            onChange={handleFilterChange}
+            disabled={!filters.department || loading}
+          >
+            <option value="">Выберите курс</option>
+            {courses.map(course => (
+              <option key={course.id} value={course.id}>{course.name}</option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="filter-group">
+          <label htmlFor="subject">Предмет:</label>
+          <select 
+            id="subject"
+            name="subject"
+            value={filters.subject}
+            onChange={handleFilterChange}
+            disabled={!filters.course || loading}
+          >
+            <option value="">Выберите предмет</option>
+            {subjects.map(subject => (
+              <option key={subject.id} value={subject.id}>{subject.name}</option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="filter-group">
+          <label htmlFor="lecture">Лекция:</label>
+          <select 
+            id="lecture"
+            name="lecture"
+            value={filters.lecture}
+            onChange={handleFilterChange}
+            disabled={!filters.subject || loading}
+          >
+            <option value="">Выберите лекцию</option>
+            {lectures.map(lecture => (
+              <option key={lecture.id} value={lecture.id}>{lecture.title}</option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="buttons-group">
+          <button 
+            onClick={applyFilters}
+            disabled={loading}
+            className="apply-button"
+          >
+            {loading ? 'Загрузка...' : 'Применить фильтры'}
+          </button>
+          <button
+            onClick={clearFilters}
+            disabled={loading}
+            className="clear-button"
+          >
+            Очистить фильтры
+          </button>
+        </div>
       </div>
       
-      <div className="filter-group">
-        <label htmlFor="course">Курс:</label>
-        <select 
-          id="course"
-          name="course"
-          value={filters.course}
-          onChange={handleFilterChange}
-          disabled={!filters.department || loading}
-        >
-          <option value="">Все курсы</option>
-          {courses.map(course => (
-            <option key={course.id} value={course.id}>{course.name}</option>
-          ))}
-        </select>
-      </div>
-      
-      <div className="filter-group">
-        <label htmlFor="subject">Предмет:</label>
-        <select 
-          id="subject"
-          name="subject"
-          value={filters.subject}
-          onChange={handleFilterChange}
-          disabled={!filters.course || loading}
-        >
-          <option value="">Все предметы</option>
-          {subjects.map(subject => (
-            <option key={subject.id} value={subject.id}>{subject.name}</option>
-          ))}
-        </select>
-      </div>
-      
-      <div className="filter-group">
-        <label htmlFor="lecture">Лекция:</label>
-        <select 
-          id="lecture"
-          name="lecture"
-          value={filters.lecture}
-          onChange={handleFilterChange}
-          disabled={!filters.subject || loading}
-        >
-          <option value="">Все лекции</option>
-          {lectures.map(lecture => (
-            <option key={lecture.id} value={lecture.id}>{lecture.title}</option>
-          ))}
-        </select>
-      </div>
-      
-      <button 
-        onClick={applyFilters}
-        disabled={loading}
-        className="apply-button"
-      >
-        {loading ? 'Загрузка...' : 'Применить фильтры'}
-      </button>
-      <button
-      
-        className="apply-button"
-      >
-        {'Очистить фильтры'}
-      </button>
       {error && <div className="error-message">{error}</div>}
       
-      <div className="results-container">
+      <div className="results-section">
+        <h3>Результаты:</h3>
         {loading ? (
           <div className="loading-indicator">Загрузка данных...</div>
         ) : results.length > 0 ? (
           <ul className="results-list">
             {results.map(item => (
               <li key={item.id} className="result-item">
-                {item.title}
+                <h4>{item.title}</h4>
+                {item.description && <p>{item.description}</p>}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="no-results">Нет данных по выбранным фильтрам</p>
+          !loading && <p className="no-results">Нет данных по выбранным фильтрам</p>
         )}
       </div>
     </div>
   );
 };
-
 
 export default LeftFilters;

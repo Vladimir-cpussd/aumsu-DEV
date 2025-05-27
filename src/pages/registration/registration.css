@@ -82,8 +82,12 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
+    
         
         .error {
             color: red;
             margin-top: 10px;
         }
+
+        
